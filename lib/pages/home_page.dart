@@ -1,4 +1,5 @@
 import 'package:creditcard/pages/widgets/my_app_bar.dart';
+import 'package:creditcard/pages/widgets/painel_top.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,7 +14,8 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: Stack(
           children: <Widget>[
-            MyAppBar()
+            MyAppBar(),
+            PainelTop()
           ],
         )
       ),
