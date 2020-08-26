@@ -1,3 +1,4 @@
+import 'package:creditcard/pages/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -8,8 +9,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return Scaffold(
+      body: SafeArea(
+        child: Stack(
+          children: <Widget>[
+            MyAppBar()
+          ],
+        )
+      ),
     );
   }
 }
