@@ -6,7 +6,11 @@ class ItemPage extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(top: 90.0 + MediaQuery.of(context).size.height/5 + MediaQuery.of(context).padding.top),
       child: Container(
-        color: Colors.red
+        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.blue
+        ),
       ),
     );
   }
