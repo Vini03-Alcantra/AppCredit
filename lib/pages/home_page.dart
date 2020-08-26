@@ -9,6 +9,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final PageController _pageController = PageController(viewportFraction: 0.8);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,8 +19,11 @@ class _HomePageState extends State<HomePage> {
             MyAppBar(),
             PainelTop(),
             PageView(
+              controller: _pageController,
               children: <Widget>[
-                ItemPage()
+                ItemPage(),
+                ItemPage(),
+                ItemPage(),
               ],
             )
           ],
