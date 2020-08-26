@@ -21,9 +21,9 @@ class _HomePageState extends State<HomePage> {
             PageView(
               controller: _pageController,
               children: <Widget>[
-                ItemPage(),
-                ItemPage(),
-                ItemPage(),
+                ItemPage(imageURL: "https://us.123rf.com/450wm/grebeshkovmaxim/grebeshkovmaxim1805/grebeshkovmaxim180500202/100769321-colorful-smooth-gradient-color-background-design-for-your-project-design-.jpg?ver=6",),
+                ItemPage(imageURL: "https://ak5.picdn.net/shutterstock/videos/1018020805/thumb/1.jpg"),
+                ItemPage(imageURL: "https://i.pinimg.com/736x/5c/ee/af/5ceeafdc811d2269821fb03df29374ff.jpg",),
               ],
             )
           ],
