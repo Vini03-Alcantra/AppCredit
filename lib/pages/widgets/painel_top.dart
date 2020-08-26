@@ -1,3 +1,4 @@
+import 'package:creditcard/pages/widgets/item_page.dart';
 import 'package:flutter/material.dart';
 
 class PainelTop extends StatelessWidget {
@@ -35,7 +36,7 @@ class PainelTop extends StatelessWidget {
                   SizedBox(height: 10,),
                   Text("\$2346.53", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold))
                 ],
-              )
+              ),              
             ],
           ),
         ),

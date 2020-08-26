@@ -20,7 +20,7 @@ class MyAppBar extends StatelessWidget {
                 icon: Icon(Icons.check_circle_outline),
                 onPressed: (){}
               ),
-            )
+            ),            
           ],
         ),
       ),
