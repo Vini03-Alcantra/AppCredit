@@ -6,7 +6,12 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage()
+      title: "Sistema de Crédito",
+      theme: ThemeData(  
+        primarySwatch: Colors.blue,
+        brightness: Brightness.dark
+      ),
+      home: HomePage() 
     );
   }
 }
