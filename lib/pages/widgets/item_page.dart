@@ -1,20 +1,26 @@
-import 'package:creditcard/controllers/offset_controller.dart';
+import 'package:creditcard/controllers/page_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sa_v1_migration/simple_animations/multi_track_tween.dart';
+import 'package:sa_v1_migration/simple_animations/controlled_animation.dart';
 class ItemPage extends StatelessWidget {
   final Color color;
   final int index;
   final String numberCard;
   final String name;
   final String imageURL;
+  final MultiTrackTween multiTrackTween = MultiTrackTween([
+    Track('rotate')
+      .add(Duration(milliseconds: 300), Tween(begin: 0.0, end: -0.5))
+  ]);
 
   ItemPage({this.color, this.index, this.numberCard, this.name, this.imageURL});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<PageController>(      
+    return Consumer<PageControllerApp>(      
       child: Container(
-        child:ClipRRect(  
+        child: ClipRRect(  
           borderRadius: BorderRadius.circular(20),
           child: RotatedBox(
             quarterTurns: 1,  
@@ -40,17 +46,25 @@ class ItemPage extends StatelessWidget {
           color: Colors.blue
         )
       ),
-      builder: (BuildContext context, PageController value, Widget child) { 
+      builder: (BuildContext context, PageControllerApp value, Widget child) { 
+        int currentIndex = Provider.of<PageControllerApp>(context, listen: false).index;
         return Stack(
           children: <Widget>[
-            Positioned(  
-              top: MediaQuery.of(context).size.height / 3,
-              height: MediaQuery.of(context).size.height / 1.8,
-              width: MediaQuery.of(context).size.width - 90,
-              child: Transform.rotate(
-                angle: 0,
-                child: child,
-              ),
+            ControlledAnimation(
+              tween: multiTrackTween,
+              duration: multiTrackTween.duration,
+              playback: currentIndex >= index ? Playback.PLAY_FORWARD : Playback.PLAY_REVERSE,
+              builder: (context, animation){
+                return Positioned(  
+                  top: MediaQuery.of(context).size.height / 3,
+                  height: MediaQuery.of(context).size.height / 1.8,
+                  width: MediaQuery.of(context).size.width - 90,
+                  child: Transform.rotate(
+                    angle: currentIndex == index ? 0 : animation['rotate'],
+                    child: child,
+                  ),
+                );
+              }              
             )
           ],
         );
