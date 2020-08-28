@@ -13,7 +13,9 @@ class ItemPage extends StatelessWidget {
     Track('rotate')
       .add(Duration(milliseconds: 300), Tween(begin: 0.0, end: -0.5)),
     Track('scale')
-      .add(Duration(milliseconds: 300), Tween(begin: 1.0, end: 0.5))
+      .add(Duration(milliseconds: 300), Tween(begin: 1.0, end: 0.5)),
+    Track('opacity')
+      .add(Duration(milliseconds: 300), Tween(begin: 1.0, end: 0.0)),
   ]);
 
   ItemPage({this.color, this.index, this.numberCard, this.name, this.imageURL});
@@ -64,7 +66,7 @@ class ItemPage extends StatelessWidget {
                   child: Transform.rotate(
                     angle: animation['rotate'],
                     child: Transform.scale(
-                      child: child,
+                      child: Opacity(child: child, opacity: animation['opacity']),
                       scale: animation['scale']
                     ),
                   ),
