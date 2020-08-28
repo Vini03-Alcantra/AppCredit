@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
               MyAppBar(),
               PainelTop(),
               PageView(
+                physics: ClampingScrollPhysics(),
                 onPageChanged: (index){
                   Provider.of<PageControllerApp>(context, listen: false).setPageIndex(index);
                 },

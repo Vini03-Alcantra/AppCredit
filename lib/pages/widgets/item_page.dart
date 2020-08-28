@@ -11,7 +11,9 @@ class ItemPage extends StatelessWidget {
   final String imageURL;
   final MultiTrackTween multiTrackTween = MultiTrackTween([
     Track('rotate')
-      .add(Duration(milliseconds: 300), Tween(begin: 0.0, end: -0.5))
+      .add(Duration(milliseconds: 300), Tween(begin: 0.0, end: -0.5)),
+    Track('scale')
+      .add(Duration(milliseconds: 300), Tween(begin: 1.0, end: 0.5))
   ]);
 
   ItemPage({this.color, this.index, this.numberCard, this.name, this.imageURL});
@@ -53,15 +55,18 @@ class ItemPage extends StatelessWidget {
             ControlledAnimation(
               tween: multiTrackTween,
               duration: multiTrackTween.duration,
-              playback: currentIndex >= index ? Playback.PLAY_FORWARD : Playback.PLAY_REVERSE,
+              playback: currentIndex > index ? Playback.PLAY_FORWARD : Playback.PLAY_REVERSE,
               builder: (context, animation){
                 return Positioned(  
                   top: MediaQuery.of(context).size.height / 3,
                   height: MediaQuery.of(context).size.height / 1.8,
                   width: MediaQuery.of(context).size.width - 90,
                   child: Transform.rotate(
-                    angle: currentIndex == index ? 0 : animation['rotate'],
-                    child: child,
+                    angle: animation['rotate'],
+                    child: Transform.scale(
+                      child: child,
+                      scale: animation['scale']
+                    ),
                   ),
                 );
               }              
