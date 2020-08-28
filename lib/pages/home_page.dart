@@ -2,6 +2,7 @@ import 'package:creditcard/pages/widgets/item_page.dart';
 import 'package:creditcard/pages/widgets/my_app_bar.dart';
 import 'package:creditcard/pages/widgets/painel_top.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -19,6 +20,9 @@ class _HomePageState extends State<HomePage> {
             MyAppBar(),
             PainelTop(),
             PageView(
+              onPageChanged: (index){
+                Provider.of<PageController>(context, listen: false).jumpToPage(index);
+              },
               controller: _pageController,
               children: <Widget>[
                 ItemPage(imageURL: "https://us.123rf.com/450wm/grebeshkovmaxim/grebeshkovmaxim1805/grebeshkovmaxim180500202/100769321-colorful-smooth-gradient-color-background-design-for-your-project-design-.jpg?ver=6",),

@@ -1,5 +1,6 @@
 import 'package:creditcard/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -11,7 +12,10 @@ class Home extends StatelessWidget {
         primarySwatch: Colors.blue,
         brightness: Brightness.dark
       ),
-      home: HomePage() 
+      home: ChangeNotifierProvider(
+        child: HomePage(),
+        create: (BuildContext context) => PageController(),
+      ) 
     );
   }
 }

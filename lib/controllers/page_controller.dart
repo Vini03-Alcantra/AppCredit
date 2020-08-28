@@ -6,10 +6,9 @@ class PageController extends ChangeNotifier {
 
   int get index => _index;
 
-  PageController(PageController pageController){
-    pageController.addListener((){
-      _index = pageController.index;
-      notifyListeners();
-    });
+  setPageIndex(int value){
+    _index = value;
+    notifyListeners();
   }
+  
 }
