@@ -20,6 +20,13 @@ class ItemPage extends StatelessWidget {
       .add(Duration(milliseconds: 300), Tween(begin: 0.0, end: 20)),
   ]);
 
+  final MultiTrackTween animacaoCard = MultiTrackTween([
+    Track('rotate')
+      .add(Duration(milliseconds: 300), Tween(begin: 0.0, end: -1.57)),
+    Track('scale')
+      .add(Duration(milliseconds: 300), Tween(begin: 1.0, end: 0.8))
+  ]);
+
   ItemPage({this.color, this.index, this.numberCard, this.name, this.imageURL});
 
   @override
@@ -78,36 +85,51 @@ class ItemPage extends StatelessWidget {
           return AnimatedOpacity(
             duration: Duration(milliseconds: 300),
             opacity: hideCard ? 0 : 1,
-            child: Stack(
-              children: <Widget>[
-                ControlledAnimation(
-                  tween: multiTrackTween,
-                  duration: multiTrackTween.duration,
-                  playback: pageIndex > index ? Playback.PLAY_FORWARD : Playback.PLAY_REVERSE,
-                  builder: (context, animation){
-                    return Positioned(  
-                      top: MediaQuery.of(context).size.height / 3,
-                      height: MediaQuery.of(context).size.height / 1.7,
-                      width: MediaQuery.of(context).size.width - 90,
-                      child: Transform.rotate(
-                        angle: animation['rotate'],
-                        child: Transform.scale(
-                          child: Opacity(
-                            opacity: animation['opacity'],
-                            child: Padding(
-                              padding: EdgeInsets.only(right: animation['padding_right']),
-                              child: child,
-                            ),
-                            //²duration: Duration(milliseconds: 300)
-                          ),
-                          scale: animation['scale']
-                        ),
-                      ),
-                    );
-                  }              
-                )
-              ],
-            ),
+            child: ControlledAnimation( 
+              tween: animacaoCard,
+              duration: animacaoCard.duration,
+              playback: currentIndex != -1 
+                ? Playback.PLAY_FORWARD
+                : Playback.PLAY_REVERSE,
+              builder: (context, animation){
+                return Transform.rotate(
+                  angle: animation['rotate'],
+                  child: Transform.scale(
+                    scale: animation['scale'],
+                    child: Stack(
+                      children: <Widget>[
+                        ControlledAnimation(
+                          tween: multiTrackTween,
+                          duration: multiTrackTween.duration,
+                          playback: pageIndex > index ? Playback.PLAY_FORWARD : Playback.PLAY_REVERSE,
+                          builder: (context, animation){
+                            return Positioned(  
+                              top: MediaQuery.of(context).size.height / 3,
+                              height: MediaQuery.of(context).size.height / 1.7,
+                              width: MediaQuery.of(context).size.width - 90,
+                              child: Transform.rotate(
+                                angle: animation['rotate'],
+                                child: Transform.scale(
+                                  child: Opacity(
+                                    opacity: animation['opacity'],
+                                    child: Padding(
+                                      padding: EdgeInsets.only(right: animation['padding_right']),
+                                      child: child,
+                                    ),
+                                    //²duration: Duration(milliseconds: 300)
+                                  ),
+                                  scale: animation['scale']
+                                ),
+                              ),
+                            );
+                          }              
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              },
+            )
           );
         },
       ),
