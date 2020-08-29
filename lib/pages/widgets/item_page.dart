@@ -26,7 +26,12 @@ class ItemPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        Provider.of<PageControllerApp>(context, listen: false).setCurrentIndex(index);
+        int currentIndex = Provider.of<PageControllerApp>(context, listen: false).currentIndex;
+        if(currentIndex == -1){
+          Provider.of<PageControllerApp>(context, listen: false).setCurrentIndex(index);
+        } else{
+          Provider.of<PageControllerApp>(context, listen: false).setCurrentIndex(-1);
+        }        
       },
       child: Consumer<PageControllerApp>(      
         child: Container(
@@ -61,7 +66,7 @@ class ItemPage extends StatelessWidget {
           int currentIndex = Provider.of<PageControllerApp>(context, listen: false).currentIndex;
           bool hideCard;
           if (currentIndex != - 1) {
-            if (pageIndex == currentIndex) {
+            if (index == currentIndex) {
               hideCard = false;
             } else {
               hideCard = true;
@@ -70,36 +75,39 @@ class ItemPage extends StatelessWidget {
             hideCard = false;
           }
           
-          return Stack(
-            children: <Widget>[
-              ControlledAnimation(
-                tween: multiTrackTween,
-                duration: multiTrackTween.duration,
-                playback: pageIndex > index ? Playback.PLAY_FORWARD : Playback.PLAY_REVERSE,
-                builder: (context, animation){
-                  return Positioned(  
-                    top: MediaQuery.of(context).size.height / 3,
-                    height: MediaQuery.of(context).size.height / 1.8,
-                    width: MediaQuery.of(context).size.width - 90,
-                    child: Transform.rotate(
-                      angle: animation['rotate'],
-                      child: Transform.scale(
-                        child: AnimatedOpacity(
-                          child: Padding(
-                            padding: EdgeInsets.only(right: animation['padding_right']),
-                            child: child,
+          return AnimatedOpacity(
+            duration: Duration(milliseconds: 300),
+            opacity: hideCard ? 0 : 1,
+            child: Stack(
+              children: <Widget>[
+                ControlledAnimation(
+                  tween: multiTrackTween,
+                  duration: multiTrackTween.duration,
+                  playback: pageIndex > index ? Playback.PLAY_FORWARD : Playback.PLAY_REVERSE,
+                  builder: (context, animation){
+                    return Positioned(  
+                      top: MediaQuery.of(context).size.height / 3,
+                      height: MediaQuery.of(context).size.height / 1.7,
+                      width: MediaQuery.of(context).size.width - 90,
+                      child: Transform.rotate(
+                        angle: animation['rotate'],
+                        child: Transform.scale(
+                          child: Opacity(
+                            opacity: animation['opacity'],
+                            child: Padding(
+                              padding: EdgeInsets.only(right: animation['padding_right']),
+                              child: child,
+                            ),
+                            //²duration: Duration(milliseconds: 300)
                           ),
-                          opacity: hideCard ? 0 :
-                          animation['opacity'],
-                          duration: Duration(milliseconds: 300)
+                          scale: animation['scale']
                         ),
-                        scale: animation['scale']
                       ),
-                    ),
-                  );
-                }              
-              )
-            ],
+                    );
+                  }              
+                )
+              ],
+            ),
           );
         },
       ),
