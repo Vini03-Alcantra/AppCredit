@@ -9,6 +9,7 @@ class ItemPage extends StatelessWidget {
   final String numberCard;
   final String name;
   final String imageURL;
+  
   final MultiTrackTween multiTrackTween = MultiTrackTween([
     Track('rotate')
       .add(Duration(milliseconds: 300), Tween(begin: 0.0, end: -0.5)),
