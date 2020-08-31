@@ -86,7 +86,7 @@ class ItemPage extends StatelessWidget {
           }
           
           return AnimatedOpacity(
-            duration: Duration(milliseconds: 300),
+            duration: Duration(milliseconds: 50),
             opacity: hideCard ? 0 : 1,
             child: Stack(
               children: <Widget>[
