@@ -20,14 +20,14 @@ class PainelTopTwo extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Text("Full Card", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                  Center(child: Text("Full Card", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
                   SizedBox(height: 0.03 * MediaQuery.of(context).size.height),              
                   AnimatedPadding(
                     duration: Duration(milliseconds: 500),
                     padding: EdgeInsets.only(
                       top: notifier.currentIndex != -1 ? 0 : 40
                     ),
-                    child: Text("Rotate the card to view the security code", style: TextStyle(fontSize: 14)))
+                    child: Center(child: Text("Rotate the card to view the security code", style: TextStyle(fontSize: 14))))
                 ],
               ),
             ),

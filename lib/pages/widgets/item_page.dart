@@ -26,7 +26,7 @@ class ItemPage extends StatelessWidget {
     Track('rotate')
       .add(Duration(milliseconds: 300), Tween(begin: 0.0, end: -1.57)),
     Track('top')
-      .add(Duration(milliseconds: 300), Tween(begin: 0.31, end: 0.17)),
+      .add(Duration(milliseconds: 300), Tween(begin: 0.31, end: 0.07)),
     Track('scale')
       .add(Duration(milliseconds: 300), Tween(begin: 1.0, end: 0.8))
       .add(Duration(milliseconds: 300), Tween(begin: 0.7, end: 0.8))
@@ -39,17 +39,19 @@ class ItemPage extends StatelessWidget {
     return GestureDetector(
       onTap: (){
         int currentIndex = Provider.of<PageControllerApp>(context, listen: false).currentIndex;
-        if(currentIndex == -1){
-          Provider.of<PageControllerApp>(context, listen: false).setCurrentIndex(index);
+        if(currentIndex != -1){
+          Provider.of<PageControllerApp>(context, listen: false)
+            .setIsFlipped(!Provider.of<PageControllerApp>(context, listen: false).isFlipped);
         } else{
-          Provider.of<PageControllerApp>(context, listen: false).setCurrentIndex(-1);
+          Provider.of<PageControllerApp>(context, listen: false)
+            .setCurrentIndex(index);
         }        
       },
       child: Consumer<PageControllerApp>(      
         child: FlippableBox(
         front: FrontCard(imageURL),
-        back: BackCard(),
-        isFlipped: true,
+        back: BackCard(color),
+        isFlipped: Provider.of<PageControllerApp>(context, listen: false).isFlipped,
         ),
         builder: (BuildContext context, PageControllerApp value, Widget child) { 
           int pageIndex = Provider.of<PageControllerApp>(context, listen: false).index;
@@ -156,6 +158,9 @@ class FrontCard extends Container {
 }
 
 class BackCard extends Container {
+  final Color color;
+  BackCard(this.color);
+  
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -168,7 +173,7 @@ class BackCard extends Container {
           )
         ],
         borderRadius: BorderRadius.circular(20),
-        color: Colors.blue
+        color: color
       ),
     );
   }
