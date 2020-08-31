@@ -23,6 +23,8 @@ class ItemPage extends StatelessWidget {
   final MultiTrackTween animacaoCard = MultiTrackTween([
     Track('rotate')
       .add(Duration(milliseconds: 300), Tween(begin: 0.0, end: -1.57)),
+    Track('top')
+      .add(Duration(milliseconds: 300), Tween(begin: 0.31, end: 0.17)),
     Track('scale')
       .add(Duration(milliseconds: 300), Tween(begin: 1.0, end: 0.8))
       .add(Duration(milliseconds: 300), Tween(begin: 0.7, end: 0.8))
@@ -96,7 +98,7 @@ class ItemPage extends StatelessWidget {
                 : Playback.PLAY_REVERSE,
               builder: (context, animation){
                 return Positioned(  
-                  top: MediaQuery.of(context).size.height * 0.32,
+                  top: MediaQuery.of(context).size.height * animation['top'],
                   height: MediaQuery.of(context).size.height * 0.6,
                   width: MediaQuery.of(context).size.width * 0.77,
                   child: Transform.rotate(

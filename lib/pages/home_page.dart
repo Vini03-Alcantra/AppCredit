@@ -3,6 +3,7 @@ import 'package:creditcard/controllers/page_controller.dart';
 import 'package:creditcard/pages/widgets/item_page.dart';
 import 'package:creditcard/pages/widgets/my_app_bar.dart';
 import 'package:creditcard/pages/widgets/painel_top.dart';
+import 'package:creditcard/pages/widgets/painel_top_two.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +22,8 @@ class _HomePageState extends State<HomePage> {
           child: Stack(
             children: <Widget>[
               MyAppBar(),
-              PainelTop(),
+              //PainelTop(),
+              PainelTopTwo(),
               Consumer<PageControllerApp>(
                 builder: (context, notifier, child){
                   return PageView(
