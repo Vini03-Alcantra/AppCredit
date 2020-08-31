@@ -96,9 +96,9 @@ class ItemPage extends StatelessWidget {
                 : Playback.PLAY_REVERSE,
               builder: (context, animation){
                 return Positioned(  
-                  top: MediaQuery.of(context).size.height / 3.2,
-                  height: MediaQuery.of(context).size.height / 1.7,
-                  width: MediaQuery.of(context).size.width - 90,
+                  top: MediaQuery.of(context).size.height * 0.32,
+                  height: MediaQuery.of(context).size.height * 0.6,
+                  width: MediaQuery.of(context).size.width * 0.77,
                   child: Transform.rotate(
                   angle: animation['rotate'],
                   child: Transform.scale(
