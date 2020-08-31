@@ -17,57 +17,54 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ChangeNotifierProvider(        
-        child: SafeArea(
-          child: Stack(
-            children: <Widget>[
-              MyAppBar(),              
-              Consumer<PageControllerApp>(  
-                builder: (context, notifier, child){
-                  return AnimatedPadding(
-                    duration: Duration(milliseconds: 300),
-                    padding: EdgeInsets.only(top: notifier.currentIndex != -1 ? 0 : 20),
-                    child: AnimatedOpacity(
-                    opacity: notifier.currentIndex != -1 ? 1 : 0,
-                    child: child,
-                    duration: Duration(milliseconds: 300)
-                    )
-                  );
-                },   
-                child: PainelTopTwo(),
-              ),                           
-              Consumer<PageControllerApp>(  
-                builder: (context, notifier, child){
-                  return AnimatedOpacity(
-                    opacity: notifier.currentIndex != -1 ? 0 : 1,
-                    child: child,
-                    duration: Duration(milliseconds: 300)
-                  );
-                },
-                child: PainelTop(),
-              ),
-              Consumer<PageControllerApp>(
-                builder: (context, notifier, child){
-                  return PageView(
-                    physics: Provider.of<PageControllerApp>(context, listen: false).currentIndex != -1 
-                    ? NeverScrollableScrollPhysics()
-                    : ClampingScrollPhysics(),
-                    onPageChanged: (index){
-                      Provider.of<PageControllerApp>(context, listen: false).setPageIndex(index);
-                    },
-                    controller: _pageController,
-                    children: <Widget>[
-                      ItemPage(imageURL: "https://us.123rf.com/450wm/grebeshkovmaxim/grebeshkovmaxim1805/grebeshkovmaxim180500202/100769321-colorful-smooth-gradient-color-background-design-for-your-project-design-.jpg?ver=6", index: 0,),
-                      ItemPage(imageURL: "https://ak5.picdn.net/shutterstock/videos/1018020805/thumb/1.jpg", index: 1,),
-                      ItemPage(imageURL: "https://i.pinimg.com/736x/5c/ee/af/5ceeafdc811d2269821fb03df29374ff.jpg",index: 2,),
-                    ],
-                  );
-                },                
-              )
-            ],
-          )
-        ),        
-        create: (BuildContext context) => OffsetController(_pageController),
+      body: SafeArea(
+        child: Stack(
+          children: <Widget>[
+            MyAppBar(),              
+            Consumer<PageControllerApp>(  
+              builder: (context, notifier, child){
+                return AnimatedPadding(
+                  duration: Duration(milliseconds: 300),
+                  padding: EdgeInsets.only(top: notifier.currentIndex != -1 ? 0 : 20),
+                  child: AnimatedOpacity(
+                  opacity: notifier.currentIndex != -1 ? 1 : 0,
+                  child: child,
+                  duration: Duration(milliseconds: 300)
+                  )
+                );
+              },   
+              child: PainelTopTwo(),
+            ),                           
+            Consumer<PageControllerApp>(  
+              builder: (context, notifier, child){
+                return AnimatedOpacity(
+                  opacity: notifier.currentIndex != -1 ? 0 : 1,
+                  child: child,
+                  duration: Duration(milliseconds: 300)
+                );
+              },
+              child: PainelTop(),
+            ),
+            Consumer<PageControllerApp>(
+              builder: (context, notifier, child){
+                return PageView(
+                  physics: Provider.of<PageControllerApp>(context, listen: false).currentIndex != -1 
+                  ? NeverScrollableScrollPhysics()
+                  : ClampingScrollPhysics(),
+                  onPageChanged: (index){
+                    Provider.of<PageControllerApp>(context, listen: false).setPageIndex(index);
+                  },
+                  controller: _pageController,
+                  children: <Widget>[
+                    ItemPage(imageURL: "https://us.123rf.com/450wm/grebeshkovmaxim/grebeshkovmaxim1805/grebeshkovmaxim180500202/100769321-colorful-smooth-gradient-color-background-design-for-your-project-design-.jpg?ver=6", index: 0,),
+                    ItemPage(imageURL: "https://ak5.picdn.net/shutterstock/videos/1018020805/thumb/1.jpg", index: 1,),
+                    ItemPage(imageURL: "https://i.pinimg.com/736x/5c/ee/af/5ceeafdc811d2269821fb03df29374ff.jpg",index: 2,),
+                  ],
+                );
+              },                
+            )
+          ],
+        )
       ),
     );
   }
