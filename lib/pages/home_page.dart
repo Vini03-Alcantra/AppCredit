@@ -21,9 +21,31 @@ class _HomePageState extends State<HomePage> {
         child: SafeArea(
           child: Stack(
             children: <Widget>[
-              MyAppBar(),
-              //PainelTop(),
-              PainelTopTwo(),
+              MyAppBar(),              
+              Consumer<PageControllerApp>(  
+                builder: (context, notifier, child){
+                  return AnimatedPadding(
+                    duration: Duration(milliseconds: 300),
+                    padding: EdgeInsets.only(top: notifier.currentIndex != -1 ? 0 : 20),
+                    child: AnimatedOpacity(
+                    opacity: notifier.currentIndex != -1 ? 1 : 0,
+                    child: child,
+                    duration: Duration(milliseconds: 300)
+                    )
+                  );
+                },   
+                child: PainelTopTwo(),
+              ),                           
+              Consumer<PageControllerApp>(  
+                builder: (context, notifier, child){
+                  return AnimatedOpacity(
+                    opacity: notifier.currentIndex != -1 ? 0 : 1,
+                    child: child,
+                    duration: Duration(milliseconds: 300)
+                  );
+                },
+                child: PainelTop(),
+              ),
               Consumer<PageControllerApp>(
                 builder: (context, notifier, child){
                   return PageView(
