@@ -147,6 +147,7 @@ class FrontCard extends Container {
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children:<Widget>[
                   Row(  
@@ -167,7 +168,36 @@ class FrontCard extends Container {
                     ],
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.04),
-                  Image.network("https://img.icons8.com/cotton/2x/sim-card-chip--v1.png", width: 55, height: 55)
+                  Image.network("https://img.icons8.com/cotton/2x/sim-card-chip--v1.png", width: 55, height: 55),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                  Row(  
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            "CARD HOLDER",
+                            style: TextStyle(
+                              fontSize: 12
+                            ),
+                          ),
+                          Text(
+                            "Vinícius de Alcantra",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold
+                            ),
+                          ),
+                        ],
+                      ),
+                      Image.network(
+                        "https://img.icons8.com/cotton/2x/sim-card-chip--v1.png",
+                        width: 40,
+                        height: 40,
+                      )
+                    ],                    
+                  )
                 ]
               ),
             )
