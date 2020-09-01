@@ -169,9 +169,9 @@ class FrontCard extends Container {
                       )
                     ],
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
                   Image.network("https://img.icons8.com/cotton/2x/sim-card-chip--v1.png", width: 55, height: 55),
-                  SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.03),
                   Row(  
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -195,8 +195,8 @@ class FrontCard extends Container {
                       ),
                       Image.network(
                         operadora,
-                        width: 60,
-                        height: 60,
+                        width: 50,
+                        height: 50,
                       )
                     ],                    
                   )
@@ -231,32 +231,27 @@ class BackCard extends Container {
   BackCard(this.color);
   
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 20, top: 20),
-      child: Container(
+    return Container(
+      child: RotatedBox(
+        quarterTurns: 3,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only( left: 60),
-                child: Container(color: Colors.black38, width: 60),
-              )
-            )
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+            Container(height: 60, color: Colors.black38)
           ],
         ),
-        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(  
-              color: Colors.black26,
-              offset: Offset(0, 10),
-              blurRadius: 15
-            )
-          ],
-          borderRadius: BorderRadius.circular(20),
-          color: color
-        ),
+      ),            
+      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(  
+            color: Colors.black26,
+            offset: Offset(0, 10),
+            blurRadius: 15
+          )
+        ],
+        borderRadius: BorderRadius.circular(20),
+        color: color
       ),
     );
   }
