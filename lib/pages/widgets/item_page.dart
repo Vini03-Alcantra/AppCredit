@@ -10,6 +10,7 @@ class ItemPage extends StatelessWidget {
   final String numberCard;
   final String name;
   final String imageURL;
+  final String operadoraURL;
 
   final MultiTrackTween multiTrackTween = MultiTrackTween([
     Track('rotate')
@@ -32,7 +33,7 @@ class ItemPage extends StatelessWidget {
       .add(Duration(milliseconds: 300), Tween(begin: 0.7, end: 0.8))
   ]);
 
-  ItemPage({this.color, this.index, this.numberCard, this.name, this.imageURL});
+  ItemPage({this.color, this.index, this.numberCard, this.name, this.imageURL, this.operadoraURL});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +50,7 @@ class ItemPage extends StatelessWidget {
       },
       child: Consumer<PageControllerApp>(      
         child: FlippableBox(
-        front: FrontCard(imageURL, color),
+        front: FrontCard(imageURL, color, operadoraURL),
         back: BackCard(color),
         isFlipped: Provider.of<PageControllerApp>(context, listen: false).isFlipped,
         ),
@@ -125,7 +126,8 @@ class ItemPage extends StatelessWidget {
 class FrontCard extends Container {
   final String imageURL;
   final Color color;
-  FrontCard(this.imageURL, this.color);
+  final String operadora;
+  FrontCard(this.imageURL, this.color, this.operadora);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -192,9 +194,9 @@ class FrontCard extends Container {
                         ],
                       ),
                       Image.network(
-                        "https://img.icons8.com/cotton/2x/sim-card-chip--v1.png",
-                        width: 40,
-                        height: 40,
+                        operadora,
+                        width: 60,
+                        height: 60,
                       )
                     ],                    
                   )
@@ -233,7 +235,7 @@ class BackCard extends Container {
       padding: const EdgeInsets.only(bottom: 20, top: 20),
       child: Container(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Expanded(
               child: Padding(

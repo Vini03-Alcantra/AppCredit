@@ -59,9 +59,9 @@ class _HomePageState extends State<HomePage> {
                     },
                     controller: _pageController,
                     children: <Widget>[
-                      ItemPage(imageURL: "https://us.123rf.com/450wm/grebeshkovmaxim/grebeshkovmaxim1805/grebeshkovmaxim180500202/100769321-colorful-smooth-gradient-color-background-design-for-your-project-design-.jpg?ver=6", index: 0, color: Colors.pink),
-                      ItemPage(imageURL: "https://ak5.picdn.net/shutterstock/videos/1018020805/thumb/1.jpg", index: 1, color: Colors.white),
-                      ItemPage(imageURL: "https://i.pinimg.com/736x/5c/ee/af/5ceeafdc811d2269821fb03df29374ff.jpg", index: 2, color: Colors.purple),
+                      ItemPage(imageURL: "https://us.123rf.com/450wm/grebeshkovmaxim/grebeshkovmaxim1805/grebeshkovmaxim180500202/100769321-colorful-smooth-gradient-color-background-design-for-your-project-design-.jpg?ver=6", index: 0, color: Colors.pink, operadoraURL: "https://1000marcas.net/wp-content/uploads/2019/12/MasterCard-Logo.png"),
+                      ItemPage(imageURL: "https://ak5.picdn.net/shutterstock/videos/1018020805/thumb/1.jpg", index: 1, color: Colors.white, operadoraURL: "https://resources.mynewsdesk.com/image/upload/ojf8ed4taaxccncp6pcp.png"),
+                      ItemPage(imageURL: "https://i.pinimg.com/736x/5c/ee/af/5ceeafdc811d2269821fb03df29374ff.jpg", index: 2, color: Colors.purple, operadoraURL: "https://1000marcas.net/wp-content/uploads/2019/12/MasterCard-Logo.png",),
                     ],
                   ),
                 );
