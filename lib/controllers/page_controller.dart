@@ -16,6 +16,9 @@ class PageControllerApp extends ChangeNotifier {
 
   setCurrentIndex(int value){
     _currentIndex = value;
+    if(_currentIndex == -1){
+      _isFlipped = false;
+    }
     notifyListeners();
   }
 
