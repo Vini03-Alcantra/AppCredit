@@ -147,6 +147,7 @@ class FrontCard extends Container {
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children:<Widget>[
                   Row(  
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -164,7 +165,9 @@ class FrontCard extends Container {
                         height: 35,
                       )
                     ],
-                  )
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                  Image.network("https://img.icons8.com/cotton/2x/sim-card-chip--v1.png", width: 55, height: 55)
                 ]
               ),
             )
@@ -197,7 +200,7 @@ class BackCard extends Container {
   
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.only(bottom: 20, top: 20),
       child: Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
