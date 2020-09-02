@@ -263,8 +263,8 @@ class BackCard extends Container {
                 padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.08),
                 child: Container(
                   color: Colors.white,
-                  height: 60,
-                  width: 250,
+                  height: MediaQuery.of(context).size.height * 0.07,
+                  width: MediaQuery.of(context).size.width * 0.7,
                   child: Align(  
                     alignment: Alignment.centerRight,
                     child: Padding(  
@@ -287,11 +287,11 @@ class BackCard extends Container {
                   child: Text(
                     "1234 4321 2134 3124",
                     style: TextStyle(
-                      fontSize: 24,
+                      fontSize: 24 + MediaQuery.of(context).size.width * 0.05,
                       fontWeight: FontWeight.bold,
-                      color: color,
+                      color: color.withOpacity(0.6),
                       shadows: [
-                        Shadow(color: Colors.black38, offset: Offset(0, 3))
+                        Shadow(color: Colors.black38, offset: Offset(0, 2))
                       ]
                     ),
                   ),
@@ -325,7 +325,7 @@ class BackCard extends Container {
                     child: Text(  
                       "Service Hotline / 0800 223 545",
                       style: TextStyle(  
-                        fontSize: 16
+                        fontSize: 16 + MediaQuery.of(context).size.width * 0.006
                       ),
                     ),
                   )         

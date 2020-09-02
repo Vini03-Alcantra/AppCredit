@@ -6,7 +6,7 @@ class MyAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(      
-      height: MediaQuery.of(context).size.height * 0.06,
+      height: MediaQuery.of(context).size.height * 0.08,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Row(
