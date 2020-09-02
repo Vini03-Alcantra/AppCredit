@@ -7,6 +7,7 @@ class PainelTopTwo extends StatelessWidget {
     return Consumer<PageControllerApp>(  
       builder: (context, notifier, child){
         return AnimatedPadding(
+          curve: Curves.easeInCubic,
           duration: Duration(milliseconds: 300),
           padding: EdgeInsets.only(top: notifier.currentIndex != -1 ? 0 : 20),
           child: AnimatedOpacity(
