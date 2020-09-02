@@ -69,7 +69,7 @@ class ItemPage extends StatelessWidget {
           }
           
           return AnimatedOpacity(
-            duration: Duration(milliseconds: !hideCard ? 3000 : 10),
+            duration: Duration(milliseconds: !hideCard ? 50 : 10),
             opacity: hideCard ? 0 : 1,
             child: Stack(
               children: <Widget>[
@@ -164,8 +164,8 @@ class FrontCard extends Container {
                       ),
                       Image.network(
                         "https://i.ya-webdesign.com/images/white-wifi-logo-png-6.png",
-                        width: 35,
-                        height: 35,
+                        width: MediaQuery.of(context).size.width * 0.1,
+                        height: MediaQuery.of(context).size.height * 0.035,
                       )
                     ],
                   ),
@@ -174,8 +174,8 @@ class FrontCard extends Container {
                     children: <Widget>[
                     Image.network(
                       "https://img.icons8.com/cotton/2x/sim-card-chip--v1.png",
-                      width: 55,
-                      height: 55
+                      width: MediaQuery.of(context).size.width * 0.15,
+                      height: MediaQuery.of(context).size.width * 0.2
                     ),
                     SizedBox(width: MediaQuery.of(context).size.width * 0.08),  
                     Text(
@@ -208,8 +208,8 @@ class FrontCard extends Container {
                       ),
                       Image.network(
                         operadora,
-                        width: 50,
-                        height: 50,
+                        width: MediaQuery.of(context).size.width * 0.14,
+                        height: MediaQuery.of(context).size.height * 0.082,
                       )
                     ],                    
                   )
