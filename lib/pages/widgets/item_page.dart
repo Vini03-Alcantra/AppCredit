@@ -240,19 +240,69 @@ class FrontCard extends Container {
 }
 
 class BackCard extends Container {
-  final Color color;
+  final Color color;  
+
   BackCard(this.color);
   
   Widget build(BuildContext context) {
     return Container(
       child: RotatedBox(
         quarterTurns: 3,
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-            Container(height: 60, color: Colors.black38)
-          ],
-        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children:<Widget>[
+              Container(  
+                color: Colors.black38,
+                height: 60,
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+              Row(
+                children: <Widget>[
+                SizedBox(width: MediaQuery.of(context).size.width * 0.07),  
+                SizedBox(width: MediaQuery.of(context).size.width * 0.08),  
+                Text(
+                  "1234 4321 2134 3124",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: color,
+                    shadows: [
+                      Shadow(color: Colors.black38, offset: Offset(0, 3))
+                    ]
+                  ),
+                )
+                ]
+              ),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+              Row(  
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        "",
+                        style: TextStyle(
+                          fontSize: 12
+                        ),
+                      ),
+                      Text(
+                        "",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold
+                        ),
+                      ),
+                    ],
+                  ),                  
+                ],                    
+              )
+            ]
+          ),
+        )
       ),            
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       decoration: BoxDecoration(
