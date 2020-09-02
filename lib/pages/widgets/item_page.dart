@@ -99,7 +99,7 @@ class ItemPage extends StatelessWidget {
                           child: Opacity(
                             opacity: animation['opacity'],
                             child: Padding(
-                              padding: EdgeInsets.only(right: animation['padding_right']),
+                              padding: EdgeInsets.only(right: 0/*animation['padding_right']*/),
                               child: child,
                             ),
                             //²duration: Duration(milliseconds: 300)
