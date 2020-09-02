@@ -14,6 +14,7 @@ class PageControllerApp extends ChangeNotifier {
   PageControllerApp(){
     _sheetController.hide();
   }
+
   bool get isHide => _isHide;
   double get progress => _progress;
   SheetState get sheetState => _sheetState; 
@@ -54,15 +55,15 @@ class PageControllerApp extends ChangeNotifier {
     notifyListeners();
   }
 
-  hideSheet() async {
-    await _sheetController.hide();
+  hideSheet() async {    
     _isHide = true;
+    await _sheetController.hide();
     notifyListeners();
   }
 
   showSheet() async{
-    await _sheetController.show();
     _isHide = false;
+    await _sheetController.show();    
     notifyListeners();
   }
 }

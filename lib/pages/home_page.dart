@@ -18,6 +18,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState(){
+    super.initState();
     Provider.of<PageControllerApp>(context, listen: false).hideSheet();
   }
   @override
@@ -54,26 +55,34 @@ class _HomePageState extends State<HomePage> {
             Consumer<PageControllerApp>(  
               builder: (context, value, child){
                 bool isHide = Provider.of<PageControllerApp>(context, listen: false).isHide;
-                return SlidingSheet(
-                  elevation: 8,
-                  cornerRadius: 16,
-                  color: ThemeData.dark().primaryColor,
-                  controller: Provider.of<PageControllerApp>(context, listen: false).sheetController,
-                  snapSpec: SnapSpec(  
-                    snap: true,
-                    snappings: [(isHide ? 0.0 : 0.2), 0.4, 0.90],
-                    positioning: SnapPositioning.relativeToAvailableSpace,
+                return AnimatedOpacity(
+                  duration: Duration(milliseconds: 300),                  
+                  //opacity: 1,
+                  opacity: isHide ? 0 : 1,
+                  child: SlidingSheet(
+                    elevation: 8,
+                    cornerRadius: 16,                    
+                    listener: (state){
+                      Provider.of<PageControllerApp>(context, listen: false).setState(state);                      
+                    },                    
+                    color: ThemeData.dark().primaryColor,
+                    controller: Provider.of<PageControllerApp>(context, listen: false).sheetController,                    
+                    snapSpec: SnapSpec(  
+                      snap: true,
+                      snappings: [0.2, 0.4, 0.9],
+                      positioning: SnapPositioning.relativeToAvailableSpace,
+                    ),
+                    builder: (BuildContext context, SheetState state) { 
+                      return Material(  
+                        child: Container(
+                          height: MediaQuery.of(context).size.height,
+                          child: Center(  
+                            child: Text("Este é o conteúdo do sheet")
+                          ),
+                        )
+                      );
+                    },  
                   ),
-                  builder: (BuildContext context, SheetState state) { 
-                    return Material(  
-                      child: Container(
-                        height: MediaQuery.of(context).size.height,
-                        child: Center(  
-                          child: Text("Este é o conteúdo do sheet")
-                        ),
-                      )
-                    );
-                  },  
                 );
               },
             )

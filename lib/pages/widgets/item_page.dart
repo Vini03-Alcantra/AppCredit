@@ -40,10 +40,12 @@ class ItemPage extends StatelessWidget {
     return GestureDetector(
       onTap: (){
         int currentIndex = Provider.of<PageControllerApp>(context, listen: false).currentIndex;
+        debugPrint("per");
         if(currentIndex != -1){
           Provider.of<PageControllerApp>(context, listen: false)
             .setIsFlipped(!Provider.of<PageControllerApp>(context, listen: false).isFlipped);
         } else{
+          Provider.of<PageControllerApp>(context, listen: false).showSheet();
           Provider.of<PageControllerApp>(context, listen: false)
             .setCurrentIndex(index);
         }        
