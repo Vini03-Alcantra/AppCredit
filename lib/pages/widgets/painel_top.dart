@@ -30,7 +30,7 @@ class PainelTop extends StatelessWidget {
                     Text(
                       "Cartões de Crédito",
                       style: TextStyle(
-                        fontSize: 28,
+                        fontSize: 28 + MediaQuery.of(context).size.width * 0.002,
                         fontWeight: FontWeight.bold
                       ),
                     ),
@@ -43,9 +43,9 @@ class PainelTop extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text("Balance", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.grey[400]),),
+                    Text("Balance", style: TextStyle(fontSize: 16 + MediaQuery.of(context).size.width * 0.002, fontWeight: FontWeight.bold, color: Colors.grey[400]),),
                     SizedBox(height: 0.01 * MediaQuery.of(context).size.height),
-                    Text("\$2346.53", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold))
+                    Text("\$2346.53", style: TextStyle(fontSize: 30 + MediaQuery.of(context).size.width * 0.002, fontWeight: FontWeight.bold))
                   ],
                 ),              
               ],
