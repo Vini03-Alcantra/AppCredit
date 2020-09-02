@@ -6,6 +6,7 @@ import 'package:creditcard/pages/widgets/painel_top.dart';
 import 'package:creditcard/pages/widgets/painel_top_two.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sliding_sheet/sliding_sheet.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -31,7 +32,7 @@ class _HomePageState extends State<HomePage> {
                   child: PageView(
                     physics: Provider.of<PageControllerApp>(context, listen: false).currentIndex != -1 
                     ? NeverScrollableScrollPhysics()
-                    : ClampingScrollPhysics(),
+                    : BouncingScrollPhysics(),
                     onPageChanged: (index){
                       Provider.of<PageControllerApp>(context, listen: false).setPageIndex(index);
                     },
@@ -44,6 +45,27 @@ class _HomePageState extends State<HomePage> {
                   ),
                 );
               },                
+            ),
+            SlidingSheet(
+              elevation: 8,
+              cornerRadius: 16,
+              color: ThemeData.dark().primaryColor,
+              controller: Provider.of<PageControllerApp>(context, listen: false).sheetController,
+              snapSpec: SnapSpec(  
+                snap: true,
+                snappings: [0.2, 0.4, 0.90],
+                positioning: SnapPositioning.relativeToAvailableSpace,
+              ),
+              builder: (BuildContext context, SheetState state) { 
+                return Material(  
+                  child: Container(
+                    height: MediaQuery.of(context).size.height,
+                    child: Center(  
+                      child: Text("Este é o conteúdo do sheet")
+                    ),
+                  )
+                )
+               },  
             )
           ],
         )
