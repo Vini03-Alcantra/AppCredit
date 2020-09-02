@@ -170,7 +170,20 @@ class FrontCard extends Container {
                     ],
                   ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.03),
-                  Image.network("https://img.icons8.com/cotton/2x/sim-card-chip--v1.png", width: 55, height: 55),
+                  Row(
+                    children: <Widget>[
+                    Image.network(
+                      "https://img.icons8.com/cotton/2x/sim-card-chip--v1.png",
+                      width: 55,
+                      height: 55
+                    ),
+                    SizedBox(width: MediaQuery.of(context).size.width * 0.08),  
+                    Text(
+                      "1234 4321 2134 3124",
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    )
+                    ]
+                  ),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.03),
                   Row(  
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
