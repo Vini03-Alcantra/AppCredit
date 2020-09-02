@@ -252,13 +252,33 @@ class BackCard extends Container {
           padding: const EdgeInsets.all(20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children:<Widget>[
               Container(  
                 color: Colors.black38,
                 height: 60,
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.03),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+              Padding(  
+                padding: const EdgeInsets.only(right: 80),
+                child: Container(
+                  color: Colors.white,
+                  height: 60,
+                  width: 250,
+                  child: Align(  
+                    alignment: Alignment.centerRight,
+                    child: Padding(  
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Text(
+                        "2030 540",
+                        style: TextStyle(  
+                          color: Colors.red[800], fontSize: 21
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
               Row(
                 children: <Widget>[
                 SizedBox(width: MediaQuery.of(context).size.width * 0.07),  
