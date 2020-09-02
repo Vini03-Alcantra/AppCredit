@@ -272,7 +272,7 @@ class BackCard extends Container {
                       child: Text(
                         "2030 540",
                         style: TextStyle(  
-                          color: Colors.red[800], fontSize: 21
+                          color: Colors.grey[800], fontSize: 21
                         ),
                       ),
                     ),
@@ -317,7 +317,16 @@ class BackCard extends Container {
                         ),
                       ),
                     ],
-                  ),                  
+                  ),         
+                  Padding(  
+                    padding: const EdgeInsets.only(right: 20),
+                    child: Text(  
+                      "Service Hotline / 0800 223 545",
+                      style: TextStyle(  
+                        fontSize: 16
+                      ),
+                    ),
+                  )         
                 ],                    
               )
             ]
