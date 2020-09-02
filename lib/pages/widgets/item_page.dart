@@ -260,7 +260,7 @@ class BackCard extends Container {
               ),
               SizedBox(height: MediaQuery.of(context).size.height * 0.01),
               Padding(  
-                padding: const EdgeInsets.only(right: 80),
+                padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.08),
                 child: Container(
                   color: Colors.white,
                   height: 60,
@@ -268,7 +268,7 @@ class BackCard extends Container {
                   child: Align(  
                     alignment: Alignment.centerRight,
                     child: Padding(  
-                      padding: const EdgeInsets.only(right: 8.0),
+                      padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.08),
                       child: Text(
                         "2030 540",
                         style: TextStyle(  
@@ -280,18 +280,20 @@ class BackCard extends Container {
                 ),
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                SizedBox(width: MediaQuery.of(context).size.width * 0.07),  
-                SizedBox(width: MediaQuery.of(context).size.width * 0.08),  
-                Text(
-                  "1234 4321 2134 3124",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: color,
-                    shadows: [
-                      Shadow(color: Colors.black38, offset: Offset(0, 3))
-                    ]
+                Padding(
+                  padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.08),
+                  child: Text(
+                    "1234 4321 2134 3124",
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: color,
+                      shadows: [
+                        Shadow(color: Colors.black38, offset: Offset(0, 3))
+                      ]
+                    ),
                   ),
                 )
                 ]
@@ -319,7 +321,7 @@ class BackCard extends Container {
                     ],
                   ),         
                   Padding(  
-                    padding: const EdgeInsets.only(right: 20),
+                    padding: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.01),
                     child: Text(  
                       "Service Hotline / 0800 223 545",
                       style: TextStyle(  
