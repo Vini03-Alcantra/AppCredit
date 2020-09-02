@@ -287,7 +287,7 @@ class BackCard extends Container {
                   child: Text(
                     "1234 4321 2134 3124",
                     style: TextStyle(
-                      fontSize: 24 + MediaQuery.of(context).size.width * 0.05,
+                      fontSize: 10 + MediaQuery.of(context).size.width * 0.05,
                       fontWeight: FontWeight.bold,
                       color: color.withOpacity(0.6),
                       shadows: [

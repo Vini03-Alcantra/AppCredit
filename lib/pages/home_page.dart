@@ -15,6 +15,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final PageController _pageController = PageController(viewportFraction: 0.8);
+
+  @override
+  void initState(){
+    Provider.of<PageControllerApp>(context, listen: false).hideSheet();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,26 +51,31 @@ class _HomePageState extends State<HomePage> {
                 );
               },                
             ),
-            SlidingSheet(
-              elevation: 8,
-              cornerRadius: 16,
-              color: ThemeData.dark().primaryColor,
-              controller: Provider.of<PageControllerApp>(context, listen: false).sheetController,
-              snapSpec: SnapSpec(  
-                snap: true,
-                snappings: [0.2, 0.4, 0.90],
-                positioning: SnapPositioning.relativeToAvailableSpace,
-              ),
-              builder: (BuildContext context, SheetState state) { 
-                return Material(  
-                  child: Container(
-                    height: MediaQuery.of(context).size.height,
-                    child: Center(  
-                      child: Text("Este é o conteúdo do sheet")
-                    ),
-                  )
+            Consumer<PageControllerApp>(  
+              builder: (context, value, child){
+                bool isHide = Provider.of<PageControllerApp>(context, listen: false).isHide;
+                return SlidingSheet(
+                  elevation: 8,
+                  cornerRadius: 16,
+                  color: ThemeData.dark().primaryColor,
+                  controller: Provider.of<PageControllerApp>(context, listen: false).sheetController,
+                  snapSpec: SnapSpec(  
+                    snap: true,
+                    snappings: [(isHide ? 0.0 : 0.2), 0.4, 0.90],
+                    positioning: SnapPositioning.relativeToAvailableSpace,
+                  ),
+                  builder: (BuildContext context, SheetState state) { 
+                    return Material(  
+                      child: Container(
+                        height: MediaQuery.of(context).size.height,
+                        child: Center(  
+                          child: Text("Este é o conteúdo do sheet")
+                        ),
+                      )
+                    );
+                  },  
                 );
-               },  
+              },
             )
           ],
         )
