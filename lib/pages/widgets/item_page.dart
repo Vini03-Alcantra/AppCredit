@@ -59,6 +59,7 @@ class ItemPage extends StatelessWidget {
         builder: (BuildContext context, PageControllerApp value, Widget child) { 
           int pageIndex = Provider.of<PageControllerApp>(context, listen: false).index;
           int currentIndex = Provider.of<PageControllerApp>(context, listen: false).currentIndex;
+          double progress = Provider.of<PageControllerApp>(context, listen: false).sheetState.progress;
           bool hideCard;
           if (currentIndex != - 1) {
             if (index == currentIndex) {
@@ -83,7 +84,7 @@ class ItemPage extends StatelessWidget {
                 : Playback.PLAY_REVERSE,
               builder: (context, animation){
                 return Positioned(  
-                  top: MediaQuery.of(context).size.height * animation['top'],
+                  top: MediaQuery.of(context).size.height * animation['top']  * 230,
                   height: MediaQuery.of(context).size.height * 0.6,
                   width: MediaQuery.of(context).size.width * 0.77,
                   child: Transform.rotate(

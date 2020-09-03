@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                     controller: Provider.of<PageControllerApp>(context, listen: false).sheetController,                    
                     snapSpec: SnapSpec(  
                       snap: true,
-                      snappings: [0.2, 0.4, 0.9],
+                      snappings: [0.2, 0.65, 0.9],
                       positioning: SnapPositioning.relativeToAvailableSpace,
                     ),
                     builder: (BuildContext context, SheetState state) { 
