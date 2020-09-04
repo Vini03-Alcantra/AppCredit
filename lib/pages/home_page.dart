@@ -72,13 +72,118 @@ class _HomePageState extends State<HomePage> {
                       positioning: SnapPositioning.relativeToAvailableSpace,
                     ),
                     builder: (BuildContext context, SheetState state) { 
-                      return Material(  
-                        child: Container(
-                          height: MediaQuery.of(context).size.height,
-                          child: Center(  
-                            child: Text("Este é o conteúdo do sheet")
-                          ),
-                        )
+                      return SizedBox(
+                        height: MediaQuery.of(context).size.height - MediaQuery.of(context).size.height * 0.12,
+                        child: Column(
+                          children: <Widget>[
+                            Padding(  
+                              padding: EdgeInsets.symmetric(vertical: 20),
+                              child: SizedBox(  
+                                height: 60,
+                                width: MediaQuery.of(context).size.width,
+                                child: Padding(
+                                  padding: EdgeInsets.all(20),
+                                  child: Text(
+                                    "Today",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ),
+                            Expanded(
+                              child: ListView(
+                                children: <Widget>[
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ), ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ), ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  ),
+                                  ListTile(  
+                                    title: Text("data"),
+                                  )
+
+                                ],
+                              )
+                            )
+                          ],
+                        ),
                       );
                     },  
                   ),
