@@ -27,7 +27,7 @@ class ItemPage extends StatelessWidget {
     Track('rotate')
       .add(Duration(milliseconds: 300), Tween(begin: 0.0, end: 1.57)),
     Track('top')
-      .add(Duration(milliseconds: 300), Tween(begin: 0.31, end: 0.07)),
+      .add(Duration(milliseconds: 300), Tween(begin: 0.31, end: 0.07), curve: Curves.easeInCubic),
     Track('scale')
       .add(Duration(milliseconds: 300), Tween(begin: 1.0, end: 0.8))
       .add(Duration(milliseconds: 300), Tween(begin: 0.7, end: 0.8))
@@ -40,10 +40,9 @@ class ItemPage extends StatelessWidget {
     return GestureDetector(
       onTap: (){
         int currentIndex = Provider.of<PageControllerApp>(context, listen: false).currentIndex;
-        debugPrint("per");
+        
         if(currentIndex != -1){
-          Provider.of<PageControllerApp>(context, listen: false)
-            .setIsFlipped(!Provider.of<PageControllerApp>(context, listen: false).isFlipped);
+          Provider.of<PageControllerApp>(context, listen: false).setIsFlipped(!Provider.of<PageControllerApp>(context, listen: false).isFlipped);          
         } else{
           Provider.of<PageControllerApp>(context, listen: false).showSheet();
           Provider.of<PageControllerApp>(context, listen: false)
@@ -59,7 +58,8 @@ class ItemPage extends StatelessWidget {
         builder: (BuildContext context, PageControllerApp value, Widget child) { 
           int pageIndex = Provider.of<PageControllerApp>(context, listen: false).index;
           int currentIndex = Provider.of<PageControllerApp>(context, listen: false).currentIndex;
-          double progress = Provider.of<PageControllerApp>(context, listen: false).sheetState.progress;
+          //double progress = Provider.of<PageControllerApp>(context, listen: false).sheetState.progress;
+
           bool hideCard;
           if (currentIndex != - 1) {
             if (index == currentIndex) {
@@ -72,9 +72,10 @@ class ItemPage extends StatelessWidget {
           }
           
           return AnimatedOpacity(
-            duration: Duration(milliseconds: !hideCard ? 50 : 10),
+            duration: Duration(milliseconds:10),
             opacity: hideCard ? 0 : 1,
             child: Stack(
+              alignment: Alignment.center,
               children: <Widget>[
               ControlledAnimation( 
               tween: animacaoCard,
@@ -84,34 +85,35 @@ class ItemPage extends StatelessWidget {
                 : Playback.PLAY_REVERSE,
               builder: (context, animation){
                 return Positioned(  
-                  top: MediaQuery.of(context).size.height * animation['top']  * 230,
+                  //top: MediaQuery.of(context).size.height * animation['top'] - Provider.of<PageControllerApp>(context, listen: false).sheetState.progress * 230,
+                  top: MediaQuery.of(context).size.height * animation['top'],
                   height: MediaQuery.of(context).size.height * 0.6,
                   width: MediaQuery.of(context).size.width * 0.77,
                   child: Transform.rotate(
                   angle: animation['rotate'],
-                  child: Transform.scale(
-                    scale: animation['scale'],
-                    child: ControlledAnimation(
-                    tween: multiTrackTween,
-                    duration: multiTrackTween.duration,
-                    playback: pageIndex > index ? Playback.PLAY_FORWARD : Playback.PLAY_REVERSE,
-                    builder: (context, animation){
-                      return Transform.rotate(
-                        angle: animation['rotate'],
-                        child: Transform.scale(
-                          child: Opacity(
-                            opacity: animation['opacity'],
-                            child: Padding(
-                              padding: EdgeInsets.only(right: 0/*animation['padding_right']*/),
-                              child: child,
+                    child: Transform.scale(
+                      scale: animation['scale'],
+                      child: ControlledAnimation(
+                      tween: multiTrackTween,
+                      duration: multiTrackTween.duration,
+                      playback: pageIndex > index ? Playback.PLAY_FORWARD : Playback.PLAY_REVERSE,
+                      builder: (context, animation){
+                        return Transform.rotate(
+                          angle: animation['rotate'],
+                          child: Transform.scale(
+                            child: Opacity(
+                              opacity: animation['opacity'],
+                              child: Padding(
+                                padding: EdgeInsets.only(right: 0/*animation['padding_right']*/),
+                                child: child,
+                              ),
+                              //²duration: Duration(milliseconds: 300)
                             ),
-                            //²duration: Duration(milliseconds: 300)
+                            scale: animation['scale'] 
                           ),
-                          scale: animation['scale']
-                        ),
-                      );
-                    }              
-                  ),
+                        );
+                      }              
+                    ),
                   )
                 ),
                 );

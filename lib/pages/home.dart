@@ -9,9 +9,10 @@ class Home extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Sistema de Crédito",
-      theme: ThemeData(  
-        primarySwatch: Colors.blue,
-        brightness: Brightness.dark
+      theme: ThemeData(          
+        brightness: Brightness.dark,
+        primaryColor: Colors.black,
+        scaffoldBackgroundColor: Colors.grey[900]
       ),
       home: ChangeNotifierProvider(
         child: HomePage(),

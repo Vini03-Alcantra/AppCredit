@@ -1,11 +1,13 @@
 import 'package:creditcard/controllers/page_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sliding_sheet/sliding_sheet.dart';
 class PainelTopTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<PageControllerApp>(  
       builder: (context, notifier, child){
+        
         return AnimatedPadding(
           curve: Curves.easeInCubic,
           duration: Duration(milliseconds: 300),

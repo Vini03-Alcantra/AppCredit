@@ -56,8 +56,7 @@ class _HomePageState extends State<HomePage> {
               builder: (context, value, child){
                 bool isHide = Provider.of<PageControllerApp>(context, listen: false).isHide;
                 return AnimatedOpacity(
-                  duration: Duration(milliseconds: 300),                  
-                  //opacity: 1,
+                  duration: Duration(milliseconds: 300),                                    
                   opacity: isHide ? 0 : 1,
                   child: SlidingSheet(
                     elevation: 8,
