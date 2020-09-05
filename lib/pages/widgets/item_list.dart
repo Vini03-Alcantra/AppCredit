@@ -11,9 +11,21 @@ class ItemList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(title),    
+      title: Text(
+        title,
+        style: TextStyle(
+          fontWeight: FontWeight.bold, 
+          fontSize: 16
+        ),
+      ),    
       subtitle: Text(subTitle),
-      trailing: Text(value),
+      trailing: Text(
+        value,
+        style: TextStyle(
+          fontWeight: FontWeight.bold, 
+          fontSize: 18
+        ),
+      ),
       leading: Container(
         height: 40,
         width: 40,
