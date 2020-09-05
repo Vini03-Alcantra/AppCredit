@@ -13,10 +13,11 @@ class ItemList extends StatelessWidget {
     return ListTile(
       title: Text(title),    
       subtitle: Text(subTitle),
+      trailing: Text(value),
       leading: Container(
         height: 40,
         width: 40,
-        child: icon,
+        child: Center(child: icon),
         decoration: BoxDecoration(  
           shape: BoxShape.circle, 
           gradient: RadialGradient(

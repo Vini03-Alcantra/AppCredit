@@ -1,5 +1,6 @@
 import 'package:creditcard/controllers/offset_controller.dart';
 import 'package:creditcard/controllers/page_controller.dart';
+import 'package:creditcard/pages/widgets/item_list.dart';
 import 'package:creditcard/pages/widgets/item_page.dart';
 import 'package:creditcard/pages/widgets/my_app_bar.dart';
 import 'package:creditcard/pages/widgets/painel_top.dart';
@@ -96,8 +97,12 @@ class _HomePageState extends State<HomePage> {
                             Expanded(
                               child: ListView(
                                 children: <Widget>[
-                                  ListTile(  
-                                    title: Text("data"),
+                                  ItemList(
+                                    "Buy Shoe"  ,
+                                    "Buy Shoe",
+                                    "+\$ 450,00",
+                                    Icon(Icons.shopping_basket),
+                                    Colors.red
                                   ),
                                   ListTile(  
                                     title: Text("data"),
