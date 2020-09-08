@@ -29,6 +29,9 @@ class MyAppBar extends StatelessWidget {
                 onPressed: (){                
                   Provider.of<PageControllerApp>(context, listen: false)
                     .setCurrentIndex(-1);
+                  
+                  Provider.of<PageControllerApp>(context, listen: false)
+                    .hideSheet();
                   },
                 ),
             ),                        

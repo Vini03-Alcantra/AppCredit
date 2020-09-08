@@ -1,4 +1,3 @@
-import 'package:creditcard/controllers/offset_controller.dart';
 import 'package:creditcard/controllers/page_controller.dart';
 import 'package:creditcard/pages/widgets/item_list.dart';
 import 'package:creditcard/pages/widgets/item_page.dart';
@@ -22,6 +21,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     Provider.of<PageControllerApp>(context, listen: false).hideSheet();
   }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
